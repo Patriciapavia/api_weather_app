@@ -8,16 +8,22 @@ async function getWeather(city, country) {
   // only proceed once second promise resolve
   return data;
 }
-getWeather("London", "Uk").then(function (weather) {
+getWeather("Canberra", "Aus").then(function (weather) {
   const w = weather;
   const location = weather.name;
   const desc = weather.weather[0].description;
   const icon = weather.weather[0].icon;
-  const wString = weather.main.temp;
+  const wString = `Today's Temp ${weather.main.temp} `;
+  const humidnity = ` Humidnity:${weather.main.humidity}%`;
+  const feelLike = ` Feel Like:${weather.main.feels_like} `;
+  const wind = `Wind Speed:${weather.wind.speed}, Wind Deg:${weather.wind.deg}`;
   console.log(icon);
   console.log(w);
   document.getElementById("w-location").innerHTML = location;
   document.getElementById("w-desc").innerHTML = desc;
   document.getElementById("w-icon").innerHTML = icon;
   document.getElementById("w-string").innerHTML = wString;
+  document.getElementById("w-humidnity").innerHTML = humidnity;
+  document.getElementById("w-feels-like").innerHTML = feelLike;
+  document.getElementById("w-wind").innerHTML = wind;
 });
